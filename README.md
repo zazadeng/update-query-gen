@@ -85,8 +85,23 @@ update_query_gen.core.getUpdateQueryDDL("./testdata/example.db",
 				"sqlite", "CMLY_CMSPROD", "./testdata/address.edn");
 ````
 
-we will have the following result ready to take the database update activity:
-{[ADDRESSID=? 2] {:owner Mask owner_K_2, :addressdata ADD1=Mask address_2 \r ADD2=another address \r CITY=Mask city \r PROVINCE=BC \r COUNTRY=Canada}, [ADDRESSID=? 1] {:owner Mask owner_Z_1, :addressdata ADD1=Mask address_1 \r ADD2=another address \r CITY=Mask city\r PROVINCE=BC \r COUNTRY=Canada}}
+it will return us the following edn result ready to take the database update activity:
+```clojure
+{
+	[ADDRESSID=? 2] {
+	  :owner Mask owner_K_2 
+	  :addressdata ADD1=Mask address_2 \r ADD2=another address \r CITY=Mask city \r PROVINCE=BC \r COUNTRY=Canada
+	} 
+	[ADDRESSID=? 1] {
+	  :owner Mask owner_Z_1 
+	  :addressdata ADD1=Mask address_1 \r ADD2=another address \r CITY=Mask city\r PROVINCE=BC \r COUNTRY=Canada
+	}
+}
+````
+
+##TODO
+1.generate the datasource specific update query set;
+2.adding batch update idea provided by JDBC's prepare statement object.
 
 ## License
 
