@@ -1,0 +1,6 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE ADDRESS(ADDRESSID integer primary key, ADDRESSDATA text, OWNER text);
+INSERT INTO "ADDRESS" VALUES(1,'ADD1=No.1 Ave \r ADD2=another address \r CITY=Richmond\r PROVINCE=BC \r COUNTRY=Canada','Zeyu Deng');
+INSERT INTO "ADDRESS" VALUES(2,'ADD1=No.3 Ave \r ADD2=another address \r CITY=Vancouver \r PROVINCE=BC \r COUNTRY=Canada','Zaza Deng');
+COMMIT;

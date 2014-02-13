@@ -1,0 +1,37 @@
+{
+  CMLY_CMSPROD
+  {
+    :table ADDRESS
+    :primary-key ADDRESSID
+    :mask-columns {
+            ADDRESSDATA {
+                    :mask-set {
+                               "ADD1=[\\w ,.]+" (str "ADD1=Mask address" "_" :addressId)
+                               "CITY=[\\w]+" (str "CITY=Mask city")
+                               }
+                  }
+            OWNER {
+                    :mask-set {"^.+$" (str "Mask owner" "_" (first :owner) "_" :addressId)}
+                  }
+             NOTEXIST {
+                    :mask-set {"^.+$" (str "")}
+                  } 
+     }
+    :mask-select-query "select ADDRESSID, ADDRESSDATA, OWNER from ADDRESS" ;fetch all keys
+  }
+
+  SUBSYSTEM_SCHEMA
+  {
+    :table ADDRESS
+    :primary-key ADDRESSID
+    :mask-columns {
+            ADDRESSDATA {
+                     :mask-set {
+                                "ADD1=[\\w ,.]+" (dm-to-string "ADD1=Mask address")
+                                "CITY=[\\w]+" (dm-to-string "CITY=Mask city")
+                                }
+                  }
+            }
+    :mask-select-query "select ADDRESSID, ADDRESSDATA from ADDRESS" ;fetch all keys
+  }
+ }
